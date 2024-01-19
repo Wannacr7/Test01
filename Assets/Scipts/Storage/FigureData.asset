@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: FigureData
+  m_EditorClassIdentifier: Assembly-CSharp::FigureData
+  figures:
+  - id: 0
+    image: {fileID: 21300000, guid: c6888e2bc5de0de43bab946d34075758, type: 3}
+  - id: 1
+    image: {fileID: 21300000, guid: ac07a3bbea0b3104db74375c0146da44, type: 3}
+  - id: 2
+    image: {fileID: 21300000, guid: 9adcf07d7d55c3341ae4c937e5301f0f, type: 3}
+  - id: 3
+    image: {fileID: 21300000, guid: e5a721b2a6b92264ba233b87003420a0, type: 3}
+  - id: 4
+    image: {fileID: 21300000, guid: aefe0cb46ed7de64d947d5b673c672a4, type: 3}
+  - id: 5
+    image: {fileID: 21300000, guid: 7afede6ffcfa302468a2f12ff9352a92, type: 3}
+  - id: 6
+    image: {fileID: 21300000, guid: 82f97003711f19448a247c68eb3ec9ee, type: 3}
+  - id: 7
+    image: {fileID: 21300000, guid: a7193f3cc715803418c1c20ec8e10def, type: 3}
+  - id: 8
+    image: {fileID: 21300000, guid: c6e051148f2350445907cc1a439f8ec6, type: 3}
+  - id: 9
+    image: {fileID: 21300000, guid: 6803577a77558994fb26a86e27ee3e88, type: 3}
