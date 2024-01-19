@@ -1,3 +1,4 @@
+using Assets.Scipts.Models;
 using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ public class BoardGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject figure;
     //(rc) rows and columns are betwen 2 and 8
-    [SerializeField] private int rc;
+    private int rc;
     
     
     
@@ -15,15 +16,10 @@ public class BoardGenerator : MonoBehaviour
     private const float MIN_SPACE = 2f;
     private float spaceFigures;
 
-
-    private void Start()
+    public void GenerateBoard( Data _data)
     {
-        figures = new GameObject[rc,rc];
-        GenerateBoard();
-    }
-
-    public void GenerateBoard()
-    {
+        rc = _data.Blocks.Count/2;
+        figures = new GameObject[rc, rc];
         var scale = Vector3.one;
         if (rc > 4) scale = new Vector3 (.6f, .6f, .6f);
         spaceFigures = CalculateFiguresSpace(scale.x);
@@ -57,6 +53,8 @@ public class BoardGenerator : MonoBehaviour
     {
         return Mathf.Min(MIN_SPACE, _scale * 2f);
     }
+
+    
 
 
 }

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 3467abd6a59677d44ab9c1bf3329f83d, type: 3}
   m_Name: FigureData
-  m_EditorClassIdentifier: Assembly-CSharp::FigureData
+  m_EditorClassIdentifier: 
   figures:
   - id: 0
     image: {fileID: 21300000, guid: c6888e2bc5de0de43bab946d34075758, type: 3}

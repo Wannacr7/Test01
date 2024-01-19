@@ -6,7 +6,7 @@ using Assets.Scipts.Models;
 public class DataLoader : MonoBehaviour
 {
 
-    private Data LoadJsonFromStreamingAssets()
+    public Data LoadJsonFromStreamingAssets()
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, "data.json");
 

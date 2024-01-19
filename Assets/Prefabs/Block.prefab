@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1349150090694655505}
   - component: {fileID: 1349150090694655504}
   - component: {fileID: 1349150090694655511}
+  - component: {fileID: 6460217320796279972}
   m_Layer: 5
-  m_Name: Figure
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,3 +122,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6460217320796279972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349150090694655509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800fc134fb4b1964d890d8a5bdebf3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  figureData: {fileID: 11400000, guid: 474a48f3c0bb8e144a353623c844d869, type: 2}
+  cover: {fileID: 21300000, guid: acd80c965d5cd6444962b67cbb0bd78d, type: 3}
+  row: 0
+  column: 0
+  number: 0

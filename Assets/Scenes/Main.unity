@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   figure: {fileID: 1349150090694655509, guid: 817ccba999c4cba4fa201af0f624cf45, type: 3}
-  rc: 8
 --- !u!1 &252209996
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 406047786}
   - component: {fileID: 406047785}
+  - component: {fileID: 406047787}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -359,6 +359,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &406047787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406047784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77cc77c9df61fe48bf2ac6c2fccc7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  figures: {fileID: 1349150090694655509, guid: 817ccba999c4cba4fa201af0f624cf45, type: 3}
+  board: {fileID: 48970208}
+  loader: {fileID: 406047785}
 --- !u!1 &1053522425
 GameObject:
   m_ObjectHideFlags: 0

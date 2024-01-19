@@ -13,10 +13,9 @@ namespace Assets.Scipts.Models
     }
 
     [Serializable]
-    class Data
+    public class Data
     {
         public List<Block> Blocks { get; set; }
-
     }
 
 }
