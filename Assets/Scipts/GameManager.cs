@@ -73,7 +73,8 @@ public class GameManager : MonoBehaviour
         startTimer = false;
         CalculateScore();
         SaveDataGame();
-        uiManager.RestartGame();
+        uiManager.ShowScore(points);
+        //uiManager.RestartGame();
     }
 
     private void SaveDataGame()
