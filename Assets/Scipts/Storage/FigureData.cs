@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FigureData", menuName = "Custom/FigureData", order = 1)]
@@ -10,5 +11,5 @@ public class FigureData : ScriptableObject
         public Sprite image;
     }
 
-    public FigureInfo[] figures = new FigureInfo[10];
+    public List<FigureInfo> figures = new List<FigureInfo>();
 }

@@ -1,6 +1,7 @@
-using Assets.Scipts.Models;
+
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,15 +20,8 @@ public class GameManager : MonoBehaviour
         var rc = gameData.Blocks.Count / 2;
         if (gameData != null)
         {
-            if (rc >= 2 && rc <= 8)
-            {
-                Debug.Log(rc);
-                board.GenerateBoard(gameData);
-            }
-            else
-            {
-                Debug.LogError("Out of Range");
-            }
+            //Here code validations of rows and colums
+            board.GenerateBoard(gameData, GetMaxRows(gameData), GetMaxColumn(gameData));
         }
         else
         {
@@ -35,5 +29,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
- 
+    private int GetMaxRows(Data _data)
+    {
+        return _data.Blocks.OrderByDescending(b => b.R).FirstOrDefault().R;
+    }
+    private int GetMaxColumn(Data _data)
+    {
+        return _data.Blocks.OrderByDescending(b => b.C).FirstOrDefault().C;
+    }
+
+
 }

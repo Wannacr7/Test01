@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Block : MonoBehaviour
+public class Figure : MonoBehaviour
 {
-    [SerializeField] private ScriptableObject figureData;
+    [SerializeField] private FigureData figureData;
     [SerializeField] Sprite cover;
 
     public int row;
@@ -14,8 +14,9 @@ public class Block : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<Image>().sprite = cover;
+        this.gameObject.GetComponent<Image>().sprite = cover;
     }
+
 
 
 
@@ -24,6 +25,14 @@ public class Block : MonoBehaviour
         row = _row;
         column = _column;
         number = _num;
+        
     }
+
+    public void FLipFigure()
+    {
+        this.gameObject.GetComponent<Image>().sprite = figureData.figures.Find(a => a.id == number).image;
+    }
+
+
 
 }

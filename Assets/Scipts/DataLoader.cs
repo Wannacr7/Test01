@@ -1,7 +1,6 @@
 using Newtonsoft.Json;
 using System.IO;
 using UnityEngine;
-using Assets.Scipts.Models;
 
 public class DataLoader : MonoBehaviour
 {
