@@ -3,16 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+
+    public static UnityAction onPairMatch;
+    public static UnityAction onPairNoMatch;
+
     private Data gameData;
     [SerializeField] GameObject figures;
     [SerializeField] BoardGenerator board;
     [SerializeField] DataLoader loader;
+
+
+
+
+    //Gameplay variables
+    private bool isSecond = false;
+    private Block firstPair;
+    private Block secondPair;
+
+
     private void Start()
     {
         SetupGame();
+    }
+    private void OnEnable()
+    {
+        Figure.onFLipFigure += CompareFigures;
+    }
+    private void OnDisable()
+    {
+        Figure.onFLipFigure -= CompareFigures;
     }
     private void SetupGame()
     {
@@ -28,6 +51,38 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Game Data Null");
         }
     }
+    private void CompareFigures(Block _figure)
+    {
+        if (!isSecond)
+        {
+            firstPair = _figure;
+            isSecond = true;
+        }
+        else
+        {
+            secondPair = _figure;
+            isSecond = false;
+            if (firstPair.Number == secondPair.Number)
+            {
+                board.figures.Find(b => b.GetComponent<Figure>().figureVars == firstPair).GetComponent<Figure>().MatchFigure();
+                board.figures.Find(b => b.GetComponent<Figure>().figureVars == secondPair).GetComponent<Figure>().MatchFigure();
+            }
+            else
+            {
+                board.figures.Find(b => b.GetComponent<Figure>().figureVars == firstPair).GetComponent<Figure>().ResetFigure();
+                board.figures.Find(b => b.GetComponent<Figure>().figureVars == secondPair).GetComponent<Figure>().ResetFigure();
+
+            }
+        }
+
+        Debug.Log(firstPair + "  " + secondPair);
+        
+    }
+
+    
+
+
+
 
     private int GetMaxRows(Data _data)
     {

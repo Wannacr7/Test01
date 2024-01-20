@@ -14,7 +14,7 @@ public class BoardGenerator : MonoBehaviour
     
     
     
-    private GameObject[,] figures;
+    public List<GameObject> figures;
     private const float MIN_SPACE = 2f;
     private float spaceFigures;
 
@@ -23,7 +23,7 @@ public class BoardGenerator : MonoBehaviour
         row = _row; 
         col = _col; 
         
-        figures = new GameObject[row, col];
+        figures = new List<GameObject>();
         var scale = Vector3.one;
         if ((row*col) > 16) scale = new Vector3 (.6f, .6f, .6f);
         spaceFigures = CalculateFiguresSpace(scale.x);
@@ -54,7 +54,7 @@ public class BoardGenerator : MonoBehaviour
                 temp.transform.position = new Vector3(xPos, -yPos, 0);
                 //Debug.Log(temp.transform.position);
 
-                figures[x,y] = temp;
+                figures.Add(temp);
 
             }
         }
