@@ -34,7 +34,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (startTimer) timer += Time.deltaTime;
+        if (startTimer)
+        {
+            timer += Time.deltaTime;
+            uiManager.UpdateTimeElapsed(timer);
+        } 
     }
     private void OnEnable()
     {
@@ -143,7 +147,11 @@ public class GameManager : MonoBehaviour
     }
     private void CountClicks(bool _click)
     {
-        if (!_click) clickCounter++;
+        if (!_click)
+        {
+            clickCounter++;
+            uiManager.UpdateClickCount(clickCounter);
+        } 
     }
 
 

@@ -18,6 +18,8 @@ public class BoardGenerator : MonoBehaviour
     private const float MIN_SPACE = 2f;
     private float spaceFigures;
 
+
+
     public void GenerateBoard( Data _data, int _row, int _col)
     {
         row = _row; 
