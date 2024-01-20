@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] DataLoader loader;
 
 
-
+    
 
     //Gameplay variables
     private bool isSecond = false;
+    private bool isFirst = true;
     private Block firstPair;
     private Block secondPair;
 
@@ -53,13 +54,16 @@ public class GameManager : MonoBehaviour
     }
     private void CompareFigures(Block _figure)
     {
+
         if (!isSecond)
         {
             firstPair = _figure;
             isSecond = true;
+            Figure.OnclickHandler?.Invoke(true);
         }
         else
         {
+            
             secondPair = _figure;
             isSecond = false;
             if (firstPair.Number == secondPair.Number)
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour
                 board.figures.Find(b => b.GetComponent<Figure>().figureVars == secondPair).GetComponent<Figure>().ResetFigure();
 
             }
+            Figure.OnclickHandler?.Invoke(true);
         }
 
         Debug.Log(firstPair + "  " + secondPair);
