@@ -15,3 +15,12 @@ public class Data
 {
     public List<Block> Blocks { get; set; }
 }
+
+[Serializable]
+public class Results
+{
+    public int total_clicks;
+    public float total_time;
+    public int pairs;
+    public float score;
+}

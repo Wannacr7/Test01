@@ -17,7 +17,7 @@ public class Figure : MonoBehaviour
     public Block figureVars;
     private bool matched = false;
     private bool canClick = true;
-    private int clickCounter;
+    
 
     private void Start()
     {
@@ -43,8 +43,12 @@ public class Figure : MonoBehaviour
 
     public void FLipFigure()
     {
-        if (!matched && canClick) StartCoroutine(FlipFigure());
-        OnclickHandler?.Invoke(false);
+        if (!matched && canClick)
+        {
+            StartCoroutine(FlipFigure());
+            OnclickHandler?.Invoke(false);
+        }
+        
     }
     private IEnumerator FlipFigure()
     {
@@ -69,8 +73,8 @@ public class Figure : MonoBehaviour
     public void ClickHandler(bool _click)
     {
         canClick = _click;
-        if(!canClick)clickCounter++;
-        Debug.Log("Click Counter" + clickCounter);
+        
+        //Debug.Log("Click Counter: " + clickCounter);
     }
 
 

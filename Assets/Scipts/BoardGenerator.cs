@@ -40,7 +40,7 @@ public class BoardGenerator : MonoBehaviour
             {
 
                 Block block = _data.Blocks.Find(b => b.R == x + 1 && b.C == y + 1);
-                Debug.Log(block.Number);
+                //Debug.Log(block.Number);
 
                 var temp = Instantiate(figure,transform,false);
 

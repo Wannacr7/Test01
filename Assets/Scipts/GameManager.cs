@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,30 +16,37 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject figures;
     [SerializeField] BoardGenerator board;
     [SerializeField] DataLoader loader;
+    [SerializeField] UIManager uiManager;
 
-
-    
+    //tracking variables
+    private int clickCounter;
+    private float timer;
+    private bool startTimer = false;
+    private float points;
 
     //Gameplay variables
     private bool isSecond = false;
-    private bool isFirst = true;
     private Block firstPair;
     private Block secondPair;
 
+    //Winner cond  variables
+    private int matches;
 
-    private void Start()
+    private void Update()
     {
-        SetupGame();
+        if (startTimer) timer += Time.deltaTime;
     }
     private void OnEnable()
     {
         Figure.onFLipFigure += CompareFigures;
+        Figure.OnclickHandler += CountClicks;
     }
     private void OnDisable()
     {
         Figure.onFLipFigure -= CompareFigures;
+        Figure.OnclickHandler -= CountClicks;
     }
-    private void SetupGame()
+    public void SetupGame()
     {
         gameData = loader.LoadJsonFromStreamingAssets();
         var rc = gameData.Blocks.Count / 2;
@@ -46,11 +54,42 @@ public class GameManager : MonoBehaviour
         {
             //Here code validations of rows and colums
             board.GenerateBoard(gameData, GetMaxRows(gameData), GetMaxColumn(gameData));
+
+            startTimer = true;
         }
         else
         {
             Debug.LogError("Game Data Null");
         }
+    }
+
+    private void HandleGameWin()
+    {
+        Debug.Log("The game has finished");
+        startTimer = false;
+        CalculateScore();
+        SaveDataGame();
+        uiManager.RestartGame();
+    }
+
+    private void SaveDataGame()
+    {
+        Results results = new Results
+        {
+            total_clicks = clickCounter,
+            total_time = timer,
+            pairs = matches,
+            score = points
+        };
+        string json = JsonUtility.ToJson(results, true);
+        string path = Path.Combine(Application.streamingAssetsPath, "gameResult.json");
+        File.WriteAllText(path, json);
+    }
+
+    private void CalculateScore()
+    {
+        points = (matches * 2) - (clickCounter - timer * .2f);
+        Debug.Log(points);
     }
     private void CompareFigures(Block _figure)
     {
@@ -70,6 +109,11 @@ public class GameManager : MonoBehaviour
             {
                 board.figures.Find(b => b.GetComponent<Figure>().figureVars == firstPair).GetComponent<Figure>().MatchFigure();
                 board.figures.Find(b => b.GetComponent<Figure>().figureVars == secondPair).GetComponent<Figure>().MatchFigure();
+                matches++;
+                if (matches == gameData.Blocks.Count/2)
+                {
+                    HandleGameWin();
+                }
             }
             else
             {
@@ -80,7 +124,7 @@ public class GameManager : MonoBehaviour
             Figure.OnclickHandler?.Invoke(true);
         }
 
-        Debug.Log(firstPair + "  " + secondPair);
+
         
     }
 
@@ -97,6 +141,11 @@ public class GameManager : MonoBehaviour
     {
         return _data.Blocks.OrderByDescending(b => b.C).FirstOrDefault().C;
     }
+    private void CountClicks(bool _click)
+    {
+        if (!_click) clickCounter++;
+    }
+
 
 
 }
