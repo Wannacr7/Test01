@@ -56,14 +56,24 @@ public class GameManager : MonoBehaviour
         var rc = gameData.Blocks.Count / 2;
         if (gameData != null)
         {
-            //Here code validations of rows and colums
-            board.GenerateBoard(gameData, GetMaxRows(gameData), GetMaxColumn(gameData));
+            if(GetMaxRows(gameData) >= 2 && GetMaxRows(gameData) <= 8 && GetMaxColumn(gameData) >= 2 && GetMaxColumn(gameData) <= 8)
+            {
+                board.GenerateBoard(gameData, GetMaxRows(gameData), GetMaxColumn(gameData));
+                startTimer = true;
+            }
+            else
+            {
+                Debug.LogError("Game Data Not Valid");
+                uiManager.RestartGame();
+            }
+                
 
-            startTimer = true;
+            
         }
         else
         {
             Debug.LogError("Game Data Null");
+            uiManager.RestartGame();
         }
     }
 

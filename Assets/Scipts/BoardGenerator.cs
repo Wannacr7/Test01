@@ -23,7 +23,9 @@ public class BoardGenerator : MonoBehaviour
     public void GenerateBoard( Data _data, int _row, int _col)
     {
         row = _row; 
-        col = _col; 
+        col = _col;
+
+
         
         figures = new List<GameObject>();
         var scale = Vector3.one;
