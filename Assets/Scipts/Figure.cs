@@ -67,7 +67,11 @@ public class Figure : MonoBehaviour
     public void MatchFigure()
     {
         matched = true;
-        this.gameObject.GetComponent<Image>().color = Color.green;
+
+        Color currentColor = new Color(189f,253f,192f,255);
+
+        this.gameObject.GetComponent<Image>().color = Color.grey;
+
     }
 
     public void ClickHandler(bool _click)
